@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Clock</h1>
+        <div class="time">
+            <span id="hour">0</span>
+            <span id="minute">00</span>
+            <span id="second">00</span>
+            <span id="period">AM</span>
+        </div>
+        <div class="date">
+            <span id="day">DD</span>
+            <span id="month">MM</span>
+            <span id="dnum">00</span>
+            <span id="year">YY</span>
+        </div>
+    </div>
+    <script>
+        function updateClock(){
+            var now = new Date() ;
+            var dayname = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+            var monthname=["", "Jan", "Feb","Mar","Apr","May", "Jun", "Jul","Aug", "Sep","Oct", "Nov", "Dec"]
+
+            var hours = now.getDate(); 
+            hours = hours < 10 ? "0"+hours : hours;  
+            var period = hours >= 12 ? "PM": "AM";
+            hours = hours%12; 
+            hours= hours = 0 ? hours : 12
+
+            var minutes = now.getMinutes();
+            minutes = minutes < 10 ? "0"+minutes : minutes;
+
+            var seconds = now.getSeconds();
+            seconds = seconds < 10 ? "0"+seconds : seconds;
+
+            var daynum = now.getDate();
+            daynum = daynum < 10 ? "0"+daynum : daynum;
+
+          
+
+
+
+            document.getElementById('hour').innerHTML = (hours);
+            document.getElementById('minute').innerHTML = (now.getMinutes());
+            document.getElementById('second').innerHTML = (seconds);
+            document.getElementById('period').innerHTML = (period);
+            document.getElementById('day').innerHTML = (dayname[now.getDay()]);
+            document.getElementById('dnum').innerHTML = (daynum);
+            document.getElementById('month').innerHTML = (monthname[now.getMonth()]);
+            document.getElementById('year').innerHTML = (now.getFullYear());
+        
+        }
+       
+        setInterval(updateClock,1);
+        updateClock();
+        
+    </script>
+</body>
+</html>
